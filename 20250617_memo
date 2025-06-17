@@ -1,0 +1,32 @@
+メモ
+
+■日付の型
+Stirngらしい
+
+■dateDifferenceを使用する。スタート、エンドの順　開始　終了
+型　String 1.1:00:00 とか1:00:00とか1.1：00：00.100000とかで帰ってくる
+dateDifference(variables('test1'),variables('test5'))
+
+
+■よって分岐使用する。下記参照
+if(
+    contains(variables('test3'), '.'),
+    add(
+        mul(int(split(variables('test3'), '.')[0]), 1440),
+        add(
+            mul(int(split(split(variables('test3'), '.')[1], ':')[0]), 60),
+            int(split(split(variables('test3'), '.')[1], ':')[1])
+        )
+    ),
+    add(
+        mul(int(split(variables('test3'), ':')[0]), 60),
+        int(split(variables('test3'), ':')[1])
+    )
+)
+トリマ整数にして終わりや！
+マイナスになるときは。。。。フローを終了してしまえ！
+
+
+
+追跡対象プロパティについて
+https://www.docswell.com/s/korune/5VVQ8P-2024-06-27-210643#p1
