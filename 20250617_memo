@@ -30,3 +30,61 @@ if(
 
 追跡対象プロパティについて
 https://www.docswell.com/s/korune/5VVQ8P-2024-06-27-210643#p1
+
+
+■ボードビューの背景色変更
+markdownにしようよ。。。。
+sp-card-subContainerの要素にスタイルを記載すればOKなんかオペレータで設定できるで！多分式でもできるけど
+    },
+    "children": [
+      {
+        "elmType": "div",
+        "attributes": {
+          "class": "ms-bgColor-white sp-css-borderColor-neutralLight sp-card-borderHighlight sp-card-subContainer sp-card-subContainer-borderRadius"
+        },
+        "style": {
+          "background-color": {
+            "operator": ":",
+            "operands": [
+              {
+                "operator": "==",
+                "operands": [
+                  "[$Status]",
+                  "完了"
+                ]
+              },
+              "#DFFFD6",
+              {
+                "operator": ":",
+                "operands": [
+                  {
+                    "operator": "==",
+                    "operands": [
+                      "[$Status]",
+                      "進行中"
+                    ]
+                  },
+                  "#FFF4D6",
+                  "#FFD6D6"
+                ]
+              }
+            ]
+          }
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "children": [
+              {
+                "elmType": "p",
+                "attributes": {
+                  "title":
+
+式バージョン
+"style": {
+  "background-color": "=if([$Status] == '完了', '#DFFFD6', if([$Status] == '進行中', '#FFF4D6', '#FFD6D6'))"
+}
+
+■完了が大量問題
+今日とnullのみに絞ったビューを作ったら解決
+
